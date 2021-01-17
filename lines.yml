@@ -1,0 +1,19 @@
+---
+- name: Lines example
+  hosts: localhost
+  tasks:
+    - name: lots of lines
+      copy:
+        content: |
+         This is line 1
+         And this is line 2
+         Finally, this is another line in line 3
+        dest: /tmp/rhce/multiple_lines
+    - name: One long line
+      copy:
+        content: >
+          This is one very long line
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          Sed odio ipsum, pretium sed fermentum sit amet, dictum sit amet erat
+          And it ends here.
+        dest: /tmp/rhce/one_line

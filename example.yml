@@ -1,0 +1,20 @@
+---
+- name: First Play
+  hosts: server1
+  tasks:
+    - name: First Task
+      debug:
+        msg: Task 1 of Play 1
+    - name: Second Task
+      debug:
+        msg: Task 2 of Play 1
+    - name: 3rd Task
+      debug:
+        msg: Task 3 of Play 1
+
+- name: Second Play
+  hosts: server1
+  tasks:
+    - name: First Task of Second Play
+      debug:
+        msg: Task 1 of Play 2

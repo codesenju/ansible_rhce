@@ -1,0 +1,39 @@
+---
+- name: Enable internet services
+  hosts: server1
+  become: yes
+  tasks:
+    - name: latest version of httpd and firewaall
+      yum:
+        name:
+          - firewalld
+          - httpd
+        state: latest
+    - name: Content index.html
+      copy:
+       content: "Welcome to the example intranet\n"
+       dest: /var/www/html/index.html
+    - name: Start service firewalld, if not started
+      service:
+       name: firewalld
+       state: started
+       enabled: yes
+    - name: Enable hhtpd service
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+        immediate: yes
+    - name:
+      service:
+       name: httpd
+        state: started
+        enabled: true
+- name: Test intranet
+  hosts: localhost
+  become: false
+  tasks:
+    - name: Connectivity check
+      uri:
+        url: http://server1
+        status_code: 200

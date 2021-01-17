@@ -1,0 +1,12 @@
+[controlnode]
+localhost
+
+[frontend]
+server1
+
+[backend]
+server2
+
+[web:children]
+frontend
+backend

@@ -1,0 +1,36 @@
+---
+- name: Array variable Example
+  hosts: server1
+  become: yes
+  vars:
+    users:
+      masubelele:
+        uname: jazz
+        fname: Lehlogonolo
+        lname: Masubelele
+        home: /opt/jazz
+        shell: /bin/bash
+      mabaso:
+        uname: lee
+        fname: Lerato
+        lname: mabaso
+        home: /opt/lee
+        shell: /bin/sh
+  tasks:
+    - name: Create users 1
+      user:
+        name: "{{ users.masubelele.uname }}"
+        comment: "{{ users.masubelele.fname  }} {{  users.masubelele.lname }}"
+        shell: "{{ users.masubelele.shell  }}"
+        home: "{{ users.masubelele.home  }}"
+        state: present
+#        remove: true
+    - name: Create users 2
+      user:
+        name: "{{ users.mabaso.uname }}"
+        comment: "{{ users.mabaso.fname }} {{  users.mabaso.lname }}"
+        shell: "{{ users.mabaso.shell }}"
+        home: "{{ users.mabaso.home }}"
+        state: present
+ #       remove: true
+
