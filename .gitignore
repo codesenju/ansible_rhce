@@ -7,3 +7,5 @@ Vagrantfile
 RHCSA.README.md
 LICENSE.BACKUP
 rhcsa
+repo.tar.gz
+MariaDB-server-10.5.8-1.el8.x86_64.rpm

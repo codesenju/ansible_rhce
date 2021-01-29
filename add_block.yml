@@ -1,0 +1,14 @@
+---
+- name: Add block of text to a file
+  hosts: all
+  vars_files:
+    - global_vars
+  tasks:
+
+    - name:
+      blockinfile:
+        path: "{{ file }}"
+        block: |
+          This block of text consists of two lines.
+          They have been added by the blockinfile module.
+        state: present

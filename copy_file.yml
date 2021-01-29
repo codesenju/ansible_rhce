@@ -1,0 +1,15 @@
+---
+- name: Copy to all managed hosts
+  hosts: all
+  vars:
+    src: files/users.txt
+  tasks:
+
+    - name: File "{{ src }}" is present
+      copy:
+        src: "{{ src }}"
+        dest: /home/devops/users.txt
+        owner: devops
+        group: devops
+        mode: u+rw,g-wx,o-rwx
+        setype: samba_share_t

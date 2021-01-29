@@ -1,0 +1,13 @@
+---
+- name: Add text to an existing fil
+  hosts: all
+  vars_files:
+    - global_vars
+  become: false
+  tasks:
+  
+    - name: Add a single line of text to a file
+      lineinfile:
+        path: "{{ file }}"
+        line: user3
+        state: absent

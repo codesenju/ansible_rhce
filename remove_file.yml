@@ -1,0 +1,11 @@
+---
+- name: Use the file module to remove a file
+  hosts: all
+  become: false
+  vars_files:
+    - global_vars
+  tasks:
+    - name:
+      file:
+        path: "{{ file }}"
+        state: absent

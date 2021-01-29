@@ -1,0 +1,16 @@
+---
+- name: Restart service if inactive
+  hosts: localhost
+  tasks:
+    - name: Check if httpd is active and return result
+      command: /usr/bin/systemctl is-enabled httpd
+      ignore_errors: yes
+      register: results
+    - name: Store results in results
+      debug:
+        msg: "{{ results }}"
+    - name: restart httpd if result is not zero
+      service: 
+        name: httpd
+        enabled: false
+      when: results.rc == 0
